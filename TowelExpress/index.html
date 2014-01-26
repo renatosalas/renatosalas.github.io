@@ -49,10 +49,6 @@
 				.title {
 					font-size: 30px;
 				}
-				#mainSlider {
-					margin-left: -20px;
-					margin-right: -20px;
-				}
 			}
 			@media (min-width: 767px) {
 				#store {
@@ -106,7 +102,7 @@
 			/* END required styles */
 		</style>
 	</head>
-	<body>
+	<body data-spy="scroll" data-offset="45" data-target=".navbar">
 		<div id="Home" class="webPage">
 			<div id="menuBar">
 				<div class="navbar">
@@ -127,7 +123,7 @@
 					      <div class="nav-collapse collapse">
 					        <!-- .nav, .navbar-search, .navbar-form, etc -->
 					        <ul class="nav">
-					        	<li class="active">
+					        	<li>
 					        		<a href="#WhatItIs" class="anchor">
 					        			<span>What It Is</span>
 					        		</a>
