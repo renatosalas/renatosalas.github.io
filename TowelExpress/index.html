@@ -7,100 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" rel="stylesheet" type="text/css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<style>
-			body {
-				font-family: 'Source Sans Pro', sans-serif;
-				background: url('http://api.thumbr.it/whitenoise-1x1.png?background=fafafaff&noise=9e909e&density=40&opacity=11');
-			}
-			#menuBar {
-				position:fixed;
-				margin-top: 20px;
-				z-index: 1;
-				width: 100%;
-			}
-			#menuBar .navbar-inner {
-				border-radius: 0px;
-			}
-			#menuBar ul.nav li a span {
-				line-height: 49px;
-				font-weight: 200;
-			}
-			.logo {
-				max-height: 50px !important;
-			}
-			@media (max-width: 767px) {
-				#menuBar {
-					margin-left: -20px;
-				}
-				#store {
-					width: 170px !important;
-					float: none !important; 
-					display: block;
-					margin: 0 auto;
-				}
-				p {
-					line-height: 30px;
-				}
-				.downArrow {
-					width: 30px;
-				}
-				.title {
-					font-size: 30px;
-				}
-			}
-			@media (min-width: 767px) {
-				#store {
-					width: 270px;
-				}
-				p {
-					line-height: 35px;
-				}
-				.downArrow {
-					width: 50px;
-				}
-				.title {
-					font-size: 40px;
-				}
-			}
-			@media (max-width: 979px) {
-				.brand .logo {
-					display: block;
-					margin: -10px auto -10px auto;
-				}
-			}
-			@media (min-width: 979px) {
-				.title {
-					font-size: 50px;
-				}
-			}
-
-			
-
-			/* Swipe 2 required styles */
-				.swipe {
-				  overflow: hidden;
-				  visibility: hidden;
-				  position: relative;
-				}
-				.swipe-wrap {
-				  overflow: hidden;
-				  position: relative;
-				}
-				.swipe-wrap > div {
-				  float:left;
-				  width:100%;
-				  position: relative;
-				  max-height: 400px;
-				}
-				.swipe-wrap > div > img {
-					width: 100%;
-					min-height: 60%;
-					max-height: 150%;
-				}
-			/* END required styles */
-		</style>
+		<link rel="stylesheet" type="text/css" href="css/customStyles.css">
 	</head>
 	<body data-spy="scroll" data-offset="45" data-target=".navbar">
 		<div id="Home" class="webPage">
@@ -145,54 +52,6 @@
 				  	</div>
 				</div>
 			</div>
-			<style>
-				ul.nav {
-					font-size: 30px;
-					font-style: normal;
-					font-weight: 200;
-				}
-				p {
-					font-size: 20px;
-					font-style: normal;
-					font-weight: 200;
-					text-align: justify;
-				}
-				#mainSlider {
-					max-height: 600px;
-					background-color: #ccc;
-					-webkit-box-shadow: 0px 19px 84px -28px rgba(0,0,0,0.75);
-					-moz-box-shadow: 0px 19px 84px -28px rgba(0,0,0,0.75);
-					box-shadow: 0px 19px 84px -28px rgba(0,0,0,0.75);
-					margin-bottom: 30px;
-				}
-				.title {
-					line-height: 50px;
-					font-style: normal;
-					font-weight: 200;
-					display: block;
-					margin-bottom: 25px;
-				}
-				#store {
-					float: left;
-				}
-				.downArrow {
-					clear: both;
-					display: block;
-					margin: 0 auto;
-				}
-				.downArrow:hover {
-					opacity: 0.7;
-				}
-				.processStep {
-					display: block;
-				}
-				ul.benefitsPoints {
-					list-style-image: url('img/checkMark.png');
-				}
-				#WhatItIs, #HowItWorks, #Benefits {
-					padding-top: 40px;
-				}
-			</style>
 			<div id="mainSlider">
 				<div id='mySwipe' style='width=100%;margin:0 auto' class='swipe'>
 					<div class='swipe-wrap'>
@@ -250,7 +109,8 @@
 				</div>
 			</div>
 		</div>
-		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 		<script src='js/swipe/swipe.js'></script>
 		<script>
 			//Initialize Swipe
