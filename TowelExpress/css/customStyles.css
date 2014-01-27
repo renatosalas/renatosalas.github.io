@@ -1,12 +1,16 @@
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-	background: url('http://api.thumbr.it/whitenoise-1x1.png?background=fafafaff&noise=9e909e&density=40&opacity=11');
+	background: url('http://api.thumbr.it/whitenoise-50x50.png?background=fafafaff&noise=9e909e&density=40&opacity=11');
 }
 #menuBar {
 	position:fixed;
 	margin-top: 20px;
 	z-index: 1;
 	width: 100%;
+	opacity: 0.6;
+}
+#menuBar:hover {
+	opacity: 1;
 }
 #menuBar .navbar-inner {
 	border-radius: 0px;
@@ -17,6 +21,9 @@ body {
 }
 .logo {
 	max-height: 50px !important;
+}
+.noBullets {
+	list-style: none;
 }
 ul.nav {
 	font-size: 30px;
@@ -36,6 +43,24 @@ p {
 	-moz-box-shadow: 0px 19px 84px -28px rgba(0,0,0,0.75);
 	box-shadow: 0px 19px 84px -28px rgba(0,0,0,0.75);
 	margin-bottom: 30px;
+}
+.slideTitleBackground {
+	position: absolute;
+	z-index: 2;
+	top: 120px;
+	padding: 10px 10px 10px 10%;
+	height: 60px;
+	width: 509px;
+	opacity: 0.9;
+	border-radius: 0px 10px 10px 0px;
+}
+.slideTitle {
+	position: absolute;
+	z-index: 3;
+	top: 125px;
+	font-size: 60px;
+	line-height: 60px;
+	padding-left: 10%;
 }
 .title {
 	line-height: 50px;
@@ -61,6 +86,24 @@ p {
 #WhatItIs, #HowItWorks, #Benefits {
 	padding-top: 40px;
 }
+.processStep img {
+	display: block;
+	margin: 0 auto;
+	border: 3px solid #FFF;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.processStep img:hover {
+	box-shadow: 0 0px 8px #428bca;
+}
+.processStep p {
+	padding-top: 10px;
+	font-size: 30px;
+	font-weight: 600;
+	text-align: center;
+}
+.img-circle {
+	border-radius: 100%;
+}
 ul.benefitsPoints {
 	list-style-image: url('../img/checkMark.png');
 }
@@ -69,6 +112,21 @@ ul.benefitsPoints {
 @media (max-width: 767px) {
 	#menuBar {
 		margin-left: -20px;
+	}
+	#mainSlider, #footer {
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+	#footer .teamIcon {
+		padding-right: 20px;
+	}
+	.slideTitleBackground {
+		height: 30px;
+		width: 260px;
+	}
+	.slideTitle {
+		font-size: 30px;
+		line-height: 30px;
 	}
 	#store {
 		width: 170px !important;
@@ -85,6 +143,9 @@ ul.benefitsPoints {
 	.title {
 		font-size: 30px;
 	}
+	.processStep {
+		padding-bottom: 20px;
+	}
 }
 @media (min-width: 767px) {
 	#store {
@@ -98,6 +159,16 @@ ul.benefitsPoints {
 	}
 	.title {
 		font-size: 40px;
+	}
+}
+@media (min-width: 767px) and (max-width: 979px) {
+	.slideTitleBackground {
+		height: 45px;
+		width: 390px;
+	}
+	.slideTitle {
+		font-size: 45px;
+		line-height: 45px;
 	}
 }
 @media (max-width: 979px) {
@@ -134,3 +205,21 @@ ul.benefitsPoints {
 		max-height: 150%;
 	}
 /* END required styles */
+#footer {
+	margin-top: 10px;
+	padding: 10px 0 10px 0;
+	background: url('http://api.thumbr.it/whitenoise-45x45.png?background=e6e6e6ff&noise=626262&density=15&opacity=15');
+	border-top:1px solid rgba(0,0,0,0.1);
+	box-shadow:0 -1px 1px rgba(255,255,255,0.5);
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 200;
+	text-align: center;
+}
+a.linkedIn {
+	display: inline-block;
+	margin-right: 5px;
+	width: 20px;
+	height: 20px;
+	background: url('../img/LinkedIn-Logo.png');
+}

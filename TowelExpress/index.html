@@ -6,7 +6,7 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
-		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" type="text/css" href="css/customStyles.css">
 	</head>
 	<body data-spy="scroll" data-offset="45" data-target=".navbar">
@@ -55,10 +55,21 @@
 			<div id="mainSlider">
 				<div id='mySwipe' style='width=100%;margin:0 auto' class='swipe'>
 					<div class='swipe-wrap'>
-					    <div><img src="img/image1.jpg"></div>
-					    <div><img src="img/image2.jpg"></div>
-					    <div><img src="img/image3.jpg"></div>
-					    <div><img src="img/image4.jpg"></div>
+					    <div>
+					    	<div class="slideTitleBackground alert-info"></div>
+					    	<span class="slideTitle">Carry the necessary</span>
+					    	<img src="img/Carga-lo-necesario.jpg">
+					    </div>
+					    <div>
+					    	<div class="slideTitleBackground alert-danger"></div>
+					    	<span class="slideTitle">Enjoy what you love!</span>
+					    	<img src="img/Disfruta-lo-que-realmente-amas.jpg">
+					    </div>
+					    <div>
+					    	<div class="slideTitleBackground alert-success"></div>
+					    	<span class="slideTitle">Always Available</span>
+					    	<img src="img/Disponibilidad-siempre.jpg">
+					    </div>
 				  	</div>
 				</div>
 			</div>
@@ -67,7 +78,8 @@
 					<span class="title">What it is <b>Towel Express</b>?</span>
 					<img id="store" src="img/TowelExpressStore.png">
 					<p>
-						This is a revolutionary towel that will change the way we know the world. This is a towel that can be used when you go swiming, when you go to the gym, or any other kind of sport that makes you sweat. This towel counts with hygienic technology that kill bacteria when it is exposed to the sun. this towel is made with ultra dry technology that in matter of seconds it gets dry. This towel is the future.
+						This is a revolutionary towel that will change the way we know the world, it can be used when you go swimming, when you go to the gym, or any other kind of sport that makes you sweat. This towel counts with hygienic technology that kills bacteria when it is exposed to the sun, it is made with ultra dry technology that in matter of seconds it gets dry, so based on this we create <span style="color:#2c7df5;">"Towel Express"</span> the easy way to get one.
+						<b>This towel is the future.</b>
 					</p>
 					<a href="#HowItWorks" class="anchor">
 						<img class="downArrow" src="img/downArrow.png" width="50">
@@ -76,22 +88,22 @@
 				<div id="HowItWorks">
 					<span class="title">How <b>Towel Express</b> works?</span>
 					<div class="row">
-						<div class="span4">
-							<img class="processStep" src="img/personsTalking.png">
+						<div class="span4 processStep">
+							<img class="img-circle" src="img/askTowel.jpg">
 							<p>
-								Icing muffin topping cupcake marshmallow. Bear claw I love sesame snaps muffin topping. Icing tiramisu gingerbread sugar plum dragée candy liquorice.
+								Ask for a Towel.
 							</p>
 						</div>
-						<div class="span4">
-							<img class="processStep" src="img/personsTalking.png">
+						<div class="span4 processStep">
+							<img class="img-circle" src="img/identifyUser.jpg">
 							<p>
-								Icing muffin topping cupcake marshmallow. Bear claw I love sesame snaps muffin topping. Icing tiramisu gingerbread sugar plum dragée candy liquorice.
+								Identify yourself.
 							</p>
 						</div>
-						<div class="span4">
-							<img class="processStep" src="img/personsTalking.png">
+						<div class="span4 processStep">
+							<img class="img-circle" src="img/getTowel.jpg">
 							<p>
-								Icing muffin topping cupcake marshmallow. Bear claw I love sesame snaps muffin topping. Icing tiramisu gingerbread sugar plum dragée candy liquorice.
+								Get your Towel.
 							</p>
 						</div>
 					</div>
@@ -103,10 +115,76 @@
 					<span class="title">Benefits of using <b>Towel Express</b></span>
 					<ul class="benefitsPoints">
 						<li><p>Don´t carry a extra bag!</p></li>
+						<li><p>Be more healthy</p></li>
+						<li><p>Always there will be one available for you.</p></li>
 						<li><p>Be more comfortable</p></li>
 						<li><p>Don´t worry about bringing a towel</p></li>
 					</ul>
 				</div>
+			</div>
+			<style>
+				#footer span {
+					line-height: 32px;
+				}
+				#footer .teamIcon {
+					float: right;
+					opacity: 0.7;
+				}
+				#footer .teamIcon:hover {
+					opacity: 1;
+				}
+			</style>
+			<div id="footer">
+				<div class="container">
+					<span>Towel Express &copy; 2014</span>
+					<input type="image" class="teamIcon" data-toggle="modal" data-target="#teamModal" src="img/teamIcon.png">
+				</div>
+			</div>
+			<div id="teamModal" class="modal hide fade">
+				<div class="modal-header">
+			    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			    	<img src="img/teamIconColor.png" style="display:inline-block;margin-bottom:10px;">
+			    	<h2 style="display:inline-block;">Team</h2>
+			  	</div>
+			  	<div class="modal-body">
+			  		<b>Designed By:</b>
+			    	<p>
+			    		<ul class="noBullets">
+			    			<li>
+			    				<a class="linkedIn" href="http://mx.linkedin.com/in/renatogutierrez/" title="LinkedIn Renato"></a>
+			    				Renato Uriel Guti&eacute;rrez Salas  
+			    			</li>
+			    			<li>
+			    				<a class="linkedIn" href="http://mx.linkedin.com/pub/francisco-javier-lópez-moreno/8a/5a/346" title="LinkedIn Francisco"></a>
+			    				Francisco Javier L&oacute;pez Moreno
+			    			</li>
+			    			<li>
+			    				<a class="linkedIn" href="http://mx.linkedin.com/pub/isaac-morelos/89/77b/ba7/" title="LinkedIn Isaac"></a>
+			    				Isaac Alfredo Morelos Cornejo
+			    			</li>
+			    		</ul>
+			    	</p>
+			    	<b>Idea of:</b>
+			    	<p>
+			    		<ul class="noBullets">
+			    			<li>
+			    				<a class="linkedIn" href="" title="LinkedIn Salvador"></a>
+			    				Salvador Ahedo
+			    			</li>
+			    			<li>
+			    				<a class="linkedIn" href="" title="LinkedIn Abraham"></a>
+			    				Abraham Socorro Rivera
+			    			</li>
+			    			<li>
+			    				<a class="linkedIn" href="" title="LinkedIn Cristian"></a>
+			    				Christian Miranda
+			    			</li>
+			    		</ul>
+			    	</p>
+			  	</div>
+			  	<div class="modal-footer">
+			    	<a href="#" class="btn" data-dismiss="modal">Close</a>
+			  	</div>
 			</div>
 		</div>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -116,14 +194,8 @@
 			//Initialize Swipe
 			var elem = document.getElementById('mySwipe');
 			window.mySwipe = Swipe(elem, {
-				startSlide: 0,
+				startSlide: 1,
 				auto: 5000
-			});
-
-			//
-			var win = $(window);
-			win.scroll(function(){
-
 			});
 
 			/* Smooth scrolling para anclas */  
@@ -141,7 +213,25 @@
 				if($('.nav-collapse').hasClass('in')){
 		            $(".btn-navbar").click();
 		        }
+			});
+
+			//Links(linkedin) open in a new window
+			$('a.linkedIn').click(function(){
+				var href = $(this).attr("href");
+				window.open(href, '_blank');
+				return false;
 			}); 
+		</script>
+		<script>
+		  //Google Analytics
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-47437545-1', 'renatosalas.github.io');
+		  ga('send', 'pageview');
+
 		</script>
 	</body>
 </html>
