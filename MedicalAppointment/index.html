@@ -40,7 +40,7 @@
     		border-bottom: solid 1px #CCC;
     	}
     	#whatItIs {
-    		height: 500px;
+    		height: 100%;
     		/*background: url('http://www.listofimages.com/wallpapers/2013/09/button-hearts-simple-wallpaper-abstract-1600x2560.jpg');
     		background-size: auto 370px;*/
     	}
@@ -206,12 +206,14 @@
   				</div>
   				<div class="row">
   					<div class="col-md-12">
-              <div class="col-md-4">
+              <div id="screenApp" class="col-md-4">
                 <style>
                   #screenApp {
+                    text-align: center;
+                  }
+                  #screenApp img {
                     max-height: 400px;
                     padding-top: 20px;
-                    padding-left: 40px;
                   }
                   .darkBlue {
                     color: #0b77bf;
@@ -269,13 +271,18 @@
   						<span class="headerTopic">Price</span>
   					</div>
   				</div>
+          <style>
+            #userPrice > img {
+              cursor: pointer;
+            }
+          </style>
   				<div class="row">
   					<div id="userPrice" class="col-sm-6 col-md-6">
-	  					<img src="img/people.png">
+	  					<img src="img/people.png" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
 	  					<span class="textPrice">Free</span>
 	  				</div>
 	  				<div id="companyPrice" class="col-sm-6 col-md-6">
-	  					<img src="img/company.png">
+	  					<img src="img/company.png" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
 	  					<span class="textPrice">Trial</span>
 	  				</div>
 	  			</div>
@@ -468,6 +475,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
     	$('.carousel').carousel();
+      $('img').popover();
     </script>
   </body>
 </html>
