@@ -34,13 +34,13 @@
     			width: 100% !important;
           height: 100% !important;
     		}
-    	#whatItIs, #price, #functionalities, #benefits, #coverage {
+    	#whatItIs, #pricing, #functionalities, #benefits, #coverage {
     		min-height: 70px;
     		padding: 15px !important;
     		border-bottom: solid 1px #CCC;
     	}
     	#whatItIs {
-    		height: 500px;
+    		height: 100%;
     		/*background: url('http://www.listofimages.com/wallpapers/2013/09/button-hearts-simple-wallpaper-abstract-1600x2560.jpg');
     		background-size: auto 370px;*/
     	}
@@ -87,9 +87,9 @@
     					text-align: right;
     					margin-right: -22px;
     				}
-    	#price {
+    	#pricing {
     		background: url('img/background.png');
-    	}
+      }
     		#userPrice img, #companyPrice img {
     			display: block;
     			margin: 0 auto;
@@ -108,6 +108,9 @@
     	#functionalities {
 
     	}
+      #coverage {
+        background: url('http://api.thumbr.it/whitenoise-361x370.png?background=a3d7ffff&noise=626262&density=15&opacity=15');
+      }
     </style>
   </head>
   <body>
@@ -129,12 +132,12 @@
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav navbar-right">
-			        <li class="active"><a href="#">What It is</a></li>
-              <li><a href="#">Pricing</a></li>
-              <li><a href="#">Functionalities</a></li>
-              <li><a href="#">Benefits</a></li>
-              <li><a href="#">Coverage</a></li>
-              <li><a href="#">Contact</a></li>
+			        <li><a href="#whatItIs">What It is</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#functionalities">Functionalities</a></li>
+              <li><a href="#benefits">Benefits</a></li>
+              <li><a href="#coverage">Coverage</a></li>
+              <li><a href="#contact">Contact</a></li>
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div>
@@ -206,12 +209,14 @@
   				</div>
   				<div class="row">
   					<div class="col-md-12">
-              <div class="col-md-4">
+              <div id="screenApp" class="col-md-4">
                 <style>
                   #screenApp {
+                    text-align: center;
+                  }
+                  #screenApp img {
                     max-height: 400px;
                     padding-top: 20px;
-                    padding-left: 40px;
                   }
                   .darkBlue {
                     color: #0b77bf;
@@ -262,20 +267,25 @@
   				</div>
   			</div>
   		</div>
-  		<div id="price" class="row">
+  		<div id="pricing" class="row">
   			<div class="container">
   				<div class="row">
   					<div class="col-md-12">
-  						<span class="headerTopic">Price</span>
+  						<span class="headerTopic">Pricing</span>
   					</div>
   				</div>
+          <style>
+            #userPrice > img {
+              cursor: pointer;
+            }
+          </style>
   				<div class="row">
   					<div id="userPrice" class="col-sm-6 col-md-6">
-	  					<img src="img/people.png">
+	  					<img src="img/people.png" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
 	  					<span class="textPrice">Free</span>
 	  				</div>
 	  				<div id="companyPrice" class="col-sm-6 col-md-6">
-	  					<img src="img/company.png">
+	  					<img src="img/company.png" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
 	  					<span class="textPrice">Trial</span>
 	  				</div>
 	  			</div>
@@ -504,6 +514,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
     	$('.carousel').carousel();
+      $('img').popover();
     </script>
   </body>
 </html>
