@@ -157,12 +157,12 @@
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#whatItIs">What It is</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-              <li><a href="#functionalities">Functionalities</a></li>
-              <li><a href="#benefits">Benefits</a></li>
-              <li><a href="#coverage">Coverage</a></li>
-              <li><a href="#contact">Contact</a></li>
+			        <li><a class="anchor" href="#whatItIs">What It is</a></li>
+              <li><a class="anchor" href="#pricing">Pricing</a></li>
+              <li><a class="anchor" href="#functionalities">Functionalities</a></li>
+              <li><a class="anchor" href="#benefits">Benefits</a></li>
+              <li><a class="anchor" href="#coverage">Coverage</a></li>
+              <li><a class="anchor" href="#contact">Contact</a></li>
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div>
@@ -423,19 +423,25 @@
   						<div class="row">
   							<div class="col-sm-6 col-md-6">
   								<ul>
-  									<li>easy booking</li>
-  									<li>no queues</li>
+  									<li>Easy booking</li>
+  									<li>No queues</li>
   								</ul>
   							</div>
   							<div class="col-sm-6 col-md-5">
   								<ul>
-  									<li>book the doctor you preefer</li>
-  									<li>no cost for using it</li>
+                    <li>No cost for using it</li>
+  									<li>Book the doctor you preefer</li>
   								</ul>
   							</div>
                 <div class="col-md-1 hidden-xs vertical-divider"></div>
   						</div>
   					</div>
+            <style>
+              #benefitsUser ul, #benefitCompany ul {
+                font-weight: 300;
+                font-size: 1.3em;
+              }
+            </style>
   					<div id="benefitCompany" class="col-sm-6 col-md-6">
   						<div class="row">
   							<p class="lead text-center">Company</p>
@@ -443,14 +449,14 @@
   						<div class="row">
   							<div class="col-sm-6 col-md-6">
   								<ul>
-  									<li>more time organization</li>
-  									<li>more patients</li>
+  									<li>More time organization</li>
+  									<li>More patients</li>
   								</ul>
   							</div>
   							<div class="col-sm-6 col-md-6">
   								<ul>
-  									<li>less human resorces</li>
-  									<li>beneffit 4</li>
+  									<li>Less human resorces</li>
+  									<li>Save money (less paper)</li>
   								</ul>
   							</div>
   						</div>
@@ -548,6 +554,91 @@
 	  			</div>
   			</div>
   		</div>
+      <style>
+        #footer {
+          /*margin-top: 10px;*/
+          padding: 10px 0 10px 0;
+          background: url('http://api.thumbr.it/whitenoise-45x45.png?background=e6e6e6ff&noise=626262&density=15&opacity=15');
+          border-top:1px solid rgba(0,0,0,0.1);
+          box-shadow:0 -1px 1px rgba(255,255,255,0.5);
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 200;
+          text-align: center;
+        }
+        #footer span {
+          line-height: 32px;
+        }
+        #footer .teamIcon {
+          float: right;
+          opacity: 0.7;
+        }
+        #footer .teamIcon:hover {
+          opacity: 1;
+        }
+        a.linkedIn {
+          display: inline-block;
+          margin-right: 5px;
+          width: 20px;
+          height: 20px;
+          background: url('img/LinkedIn-Logo.png');
+        }
+        .noBullets {
+          list-style: none;
+        }
+      </style>
+      <div id="footer" class="row">
+        <div class="container">
+          <span>MediApp © 2014</span>
+          <input type="image" class="teamIcon" data-toggle="modal" data-target="#teamModal" src="img/teamIcon.png">
+        </div>
+      </div>
+
+      <style>
+        #teamModal .modal-header {
+          padding-bottom: 10px;
+        }
+        #teamModal .modal-header img, #teamModal .modal-title {
+          display: inline-block;
+        }
+        #teamModal .modal-footer {
+          margin-top: 0px;
+        }
+      </style>
+      <!-- teamModal -->
+      <div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <img src="img/teamIconColor.png">
+              <h3 class="modal-title" id="myModalLabel">Team</h3>
+            </div>
+            <div class="modal-body">
+              <b>Designed & Idea By:</b>
+              <p>
+                <ul class="noBullets">
+                  <li>
+                    <a class="linkedIn" href="http://mx.linkedin.com/in/renatogutierrez/" title="LinkedIn Renato"></a>
+                    Renato Uriel Guti&eacute;rrez Salas  
+                  </li>
+                  <li>
+                    <a class="linkedIn" href="http://mx.linkedin.com/pub/francisco-javier-lópez-moreno/8a/5a/346" title="LinkedIn Francisco"></a>
+                    Francisco Javier L&oacute;pez Moreno
+                  </li>
+                  <li>
+                    <a class="linkedIn" href="http://mx.linkedin.com/pub/isaac-morelos/89/77b/ba7/" title="LinkedIn Isaac"></a>
+                    Isaac Alfredo Morelos Cornejo
+                  </li>
+                </ul>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
   	</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -569,6 +660,20 @@
                   scrollTop: $anchor.offset().top - anchorOffset
               }, 500);        
           });
+
+          //Hide navbar when click an option if it is collapsed
+          $('.anchor').click(function(){
+            if($('.navbar-collapse').hasClass('in')){
+              $(".navbar-toggle").click();
+            }
+          });
+
+          //Links(linkedin) open in a new window
+          $('a.linkedIn').click(function(){
+            var href = $(this).attr("href");
+            window.open(href, '_blank');
+            return false;
+          }); 
       });
     </script>
   </body>
