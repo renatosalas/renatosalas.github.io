@@ -249,7 +249,7 @@
               <div class="col-md-8">
                 <h2>MediApp</h2>
                 <p class="lead">
-                  <span class="darkBlue">Medical appointment <i>(MediApp)</i></span> is a new system we propose in which doing an appointment to go to the doctor is more easy for the patient and for the doctor. This whole system works by making an appointment via this webpage. You will be able to look at the time the doctor is available, and in that precise moment you can  book that time , or you can also cancel letting available that time for another patient.
+                  <span class="darkBlue">Medical appointment <i>(MediApp)</i></span> is the new system in which medical appointments never have been easier. In MediApp you can (as a Pacient) create an appointment to go with a doctor, as a Doctor you can manage your appointments and control the pacients dates, also as a company you can save a lot of money, because you will dont need more paper for dates for pacients. This whole system works by making an appointment via MediApp webpage or through our mobile MediApp at anytime and anywhere.
                 </p>
               </div>
   						<script>/*<div id="contentBox" class="pull-right hidden-xs">
@@ -303,13 +303,39 @@
           </style>
   				<div class="row">
   					<div id="userPrice" class="col-sm-6 col-md-6">
-	  					<img src="img/people.png" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+	  					<img id="licenseUser" src="img/people.png" class="popoverLink" data-placement="right">
 	  					<span class="textPrice">Free</span>
 	  				</div>
+            <div class="licenseUser hidden">
+              <div class="popoverTitleContent">
+                License User
+              </div>
+              <style>
+                .darkGreen {
+                  color: #419113;
+                }
+              </style>
+              <div class="popoverContent">
+                <span class="lead">
+                  Always <span class="darkGreen">Free!</span>
+                </span>
+              </div>
+            </div>
 	  				<div id="companyPrice" class="col-sm-6 col-md-6">
-	  					<img src="img/company.png" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+	  					<img id="licenseCompany" src="img/company.png" class="popoverLink" data-placement="right">
 	  					<span class="textPrice">Trial</span>
 	  				</div>
+            <div class="licenseCompany hidden">
+              <div class="popoverTitleContent">
+                License Company
+              </div>
+              <div class="popoverContent">
+                <span class="lead">
+                  3 <b>months free.</b><br>
+                  $500 USD anual.
+                </span>
+              </div>
+            </div>
 	  			</div>
   			</div>
   		</div>
@@ -726,7 +752,6 @@
         </div>
       </div>
   	</div>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -734,7 +759,15 @@
     <script>
       $(document).ready(function($) {
           $('.carousel').carousel();
-          $('img').popover();
+          $(".popoverLink").popover({ 
+              html : true,
+              title: function() {
+                return $("."+$(this).attr("id")+" .popoverTitleContent").html();
+              },
+              content: function() {
+                return $("."+$(this).attr("id")+" .popoverContent").html();
+              }
+          });
 
           $(".navbar-nav a.anchor").click(function(event) {
               event.preventDefault(); 
