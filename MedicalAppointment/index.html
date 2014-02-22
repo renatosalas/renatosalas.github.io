@@ -301,9 +301,11 @@
   					</div>
   				</div>
           <style>
+            /*Desactive popover temp
             #userPrice > img, #companyPrice > img {
               cursor: pointer;
             }
+            */
           </style>
   				<div class="row">
   					<div id="userPrice" class="col-sm-6 col-md-6">
@@ -692,7 +694,8 @@
     <script>
       $(document).ready(function($) {
           $('.carousel').carousel();
-          $('img').popover();
+          /*Desactive popover temp
+          $('img').popover();*/
 
           $(".navbar-nav a.anchor").click(function(event) {
               event.preventDefault(); 
