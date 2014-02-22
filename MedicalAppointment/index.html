@@ -38,6 +38,8 @@
     		min-height: 70px;
     		padding: 15px !important;
     		border-bottom: solid 1px #CCC;
+        /*padding-top:70px !important;
+        /*margin-top: -70px !important;*/
     	}
     	#whatItIs {
     		height: 100%;
@@ -215,8 +217,9 @@
             </style>
   					<p id="titleBanner" class="lead">The new era of Appoinments</p>
 						<div id="getStartedButton">
-              <button type="button" class="btn btn-xlg btn-success">
-  							Get Started
+              <button type="button" class="btn btn-xlg btn-success disabled">
+  							<!--Get Started-->
+                Coming Soon
   						</button>
             </div>
   				</div>
@@ -298,7 +301,7 @@
   					</div>
   				</div>
           <style>
-            #userPrice > img {
+            #userPrice > img, #companyPrice > img {
               cursor: pointer;
             }
           </style>
@@ -483,9 +486,9 @@
 						text-align: center;
 					}
 					.img-circle {
-            background:url("img/connection.png") no-repeat;
+            /*background:url("img/connection.png") no-repeat;
             background-size:128px 128px;
-            background-position: center;
+            background-position: center;*/
             height:200px;
             width:200px;
             border-radius:50%;
@@ -493,7 +496,7 @@
             margin:auto;
             background-color: white;
 					}
-          .img-circle1 {
+          /*.img-circle1 {
             background:url("img/clock.png") no-repeat;
             background-size:128px 128px;
             background-position: center;
@@ -514,17 +517,29 @@
             border-radius:50%;
             overflow:hidden;
             margin:auto;
-          }
+          }*/
   				</style>
   				<div class="row">
+            <style>
+              .textCoverage {
+                display: block;
+                text-align: center;
+                font-size: 25px;
+                font-weight: 300;
+                letter-spacing: 2px;
+              }
+            </style>
   					<div class="col-sm-4 col-md-4">
-  						<img class="img-circle">
+  						<img class="img-circle" src="img/connection.png">
+              <span class="textCoverage">Book <b>anyone</b></span>
   					</div>
   					<div class="col-sm-4 col-md-4">
-  						<img class="img-circle1">
+  						<img class="img-circle" src="img/clock.png">
+              <span class="textCoverage">Book <b>anytime</b></span>
   					</div>
   					<div class="col-sm-4 col-md-4">
-  						<img class="img-circle2">
+  						<img class="img-circle" src="img/globe.png">
+              <span class="textCoverage">Book <b>anywhere</b></span>
   					</div>
 	  			</div>
   			</div>
@@ -536,8 +551,21 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script>
-    	$('.carousel').carousel();
-      $('img').popover();
+      $(document).ready(function($) {
+          $('.carousel').carousel();
+          $('img').popover();
+
+          $(".navbar-nav a").click(function(event) {
+              event.preventDefault(); 
+              var defaultAnchorOffset = 0;
+              var $anchor = $('#' + this.hash.substring(1));   
+              var anchorOffset = 70;
+
+              $('html,body').animate({ 
+                  scrollTop: $anchor.offset().top - anchorOffset
+              }, 500);        
+          });
+      });
     </script>
   </body>
 </html>
