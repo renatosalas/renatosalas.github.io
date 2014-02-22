@@ -162,7 +162,7 @@
               <li><a class="anchor" href="#functionalities">Functionalities</a></li>
               <li><a class="anchor" href="#benefits">Benefits</a></li>
               <li><a class="anchor" href="#coverage">Coverage</a></li>
-              <li><a class="anchor" href="#contact">Contact</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li>
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div>
@@ -595,24 +595,27 @@
       </div>
 
       <style>
-        #teamModal .modal-header {
+        #teamModal .modal-header,
+        #contactModal .modal-header {
           padding-bottom: 10px;
         }
-        #teamModal .modal-header img, #teamModal .modal-title {
+        #teamModal .modal-header img, #teamModal .modal-title,
+        #contactModal .modal-header img, #contactModal .modal-title {
           display: inline-block;
         }
-        #teamModal .modal-footer {
+        #teamModal .modal-footer,
+        #contactModal .modal-footer {
           margin-top: 0px;
         }
       </style>
       <!-- teamModal -->
-      <div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="teamModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <img src="img/teamIconColor.png">
-              <h3 class="modal-title" id="myModalLabel">Team</h3>
+              <h3 class="modal-title" id="teamModalLabel">Team</h3>
             </div>
             <div class="modal-body">
               <b>Designed & Idea By:</b>
@@ -639,6 +642,48 @@
           </div>
         </div>
       </div>
+      <!-- contactModal -->
+      <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <img src="img/contact.png">
+              <h3 class="modal-title" id="contactModalLabel">Contact Us</h3>
+            </div>
+            <div class="modal-body">
+              <b>We appreciate that you have contacted us</b>
+              <br><br>
+              <form id="contactForm" name="contactForm" method="post" role="form">
+                <div class="form-group">
+                  <label for="inputName">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="inputName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail">Email</label>
+                  <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="inputCompany">Company Name</label>
+                  <input type="text" name="company" class="form-control" id="inputCompany" placeholder="Company Name">
+                </div>
+                <div class="form-group">
+                  <label for="userType">Select your type</label>
+                  <div id="userType">
+                    <input type="radio" name="userType" selected> User
+                    <input type="radio" name="userType"> Company
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Message</label>
+                  <textarea id="message" name="message" class="form-control" cols="20" rows="6"></textarea>
+                </div>
+                <button id="submitContactForm" type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
   	</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -650,14 +695,14 @@
           $('.carousel').carousel();
           $('img').popover();
 
-          $(".navbar-nav a").click(function(event) {
+          $(".navbar-nav a.anchor").click(function(event) {
               event.preventDefault(); 
               var defaultAnchorOffset = 0;
-              var $anchor = $('#' + this.hash.substring(1));   
+              var anchor = $('#' + this.hash.substring(1));   
               var anchorOffset = 70;
 
               $('html,body').animate({ 
-                  scrollTop: $anchor.offset().top - anchorOffset
+                  scrollTop: anchor.offset().top - anchorOffset
               }, 500);        
           });
 
@@ -674,6 +719,21 @@
             window.open(href, '_blank');
             return false;
           }); 
+      });
+    </script>
+    <script>
+      //Validate contactForm
+      $("#submitContactForm").click(function(){
+        var name = $("#inputName").val();
+        var email = $("#inputEmail").val();
+        var message = $("#message").val();
+        if(name != "" && email != "" && message != ""){
+          alert("Your message has been sent.!");
+        }
+        else{
+          alert("Please fill all the fields");
+          return false;
+        }
       });
     </script>
   </body>
