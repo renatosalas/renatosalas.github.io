@@ -38,13 +38,9 @@
     		min-height: 70px;
     		padding: 15px !important;
     		border-bottom: solid 1px #CCC;
-        /*padding-top:70px !important;
-        /*margin-top: -70px !important;*/
     	}
     	#whatItIs {
     		height: 100%;
-    		/*background: url('http://www.listofimages.com/wallpapers/2013/09/button-hearts-simple-wallpaper-abstract-1600x2560.jpg');
-    		background-size: auto 370px;*/
     	}
     		#contentBox {
     			margin-top: -30px;
@@ -111,7 +107,7 @@
 
     	}
       #coverage {
-        background: url('http://api.thumbr.it/whitenoise-361x370.png?background=a3d7ffff&noise=626262&density=15&opacity=15');
+        /*background: url('http://api.thumbr.it/whitenoise-361x370.png?background=a3d7ffff&noise=626262&density=15&opacity=15');*/
       }
     </style>
   </head>
@@ -301,11 +297,9 @@
   					</div>
   				</div>
           <style>
-            /*Desactive popover temp
             #userPrice > img, #companyPrice > img {
               cursor: pointer;
             }
-            */
           </style>
   				<div class="row">
   					<div id="userPrice" class="col-sm-6 col-md-6">
@@ -330,7 +324,7 @@
   					
   					<style>
   						#panelFunctionalities .panel {
-  							height: 220px;
+  							min-height: 210px;
   							padding: 20px;
   						}
 						.tabs-left > .nav-tabs {
@@ -378,22 +372,97 @@
 
   					<div id="panelFunctionalities" class="col-md-12">
   						<!-- Nav tabs -->
-						<div class="panel tabs-left">
-							<ul class="nav nav-tabs">
-							  <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-							  <li><a href="#profile" data-toggle="tab">Profile</a></li>
-							  <li><a href="#messages" data-toggle="tab">Messages</a></li>
-							  <li><a href="#settings" data-toggle="tab">Settings</a></li>
-							</ul>
-
-							<!-- Tab panes -->
-							<div class="tab-content">
-							  <div class="tab-pane fade in active" id="home">Home</div>
-							  <div class="tab-pane fade" id="profile">Profile</div>
-							  <div class="tab-pane fade" id="messages">Messages</div>
-							  <div class="tab-pane fade" id="settings">Settings</div>
-							</div>
-  						</div>
+              <div class="panel tabs-left">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                  <li><a href="#profile" data-toggle="tab">Profile</a></li>
+                  <li><a href="#appointments" data-toggle="tab">Appointments</a></li>
+                  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                </ul>
+                <style>
+                  .titleFunctions {
+                    font-weight: 300px;
+                    font-size: 20px;
+                    display: block;
+                  }
+                  .contentFunctions {
+                    padding-left: 20px;
+                  }
+                  #panelFunctionalities .tab-content {
+                    display: inline-block;
+                  }
+                </style>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane fade in active" id="home">
+                    <div id="homeUser">
+                      <p>
+                        <span class="titleFunctions">Users</span>
+                        <span class="contentFunctions">
+                          Here you can <b>create an appointment</b> with your prefered Doctor.
+                        </span>
+                      </p>
+                    </div>
+                    <div id="homeDoctor">
+                      <p>
+                        <span class="titleFunctions">Doctors</span>
+                        <span class="contentFunctions">
+                          Here you can <b>view your calendar of appointments</b> and <b>create appointments</b> for you direct pacients.
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="profile">
+                    <div id="profileUser">
+                      <p>
+                        <span class="titleFunctions">Users</span>
+                        <span class="contentFunctions">
+                          Here you can <b>view your medical information</b> (Blood type, alergies, etc).
+                        </span>
+                      </p>
+                    </div>
+                    <div id="profileDoctor">
+                      <p>
+                        <span class="titleFunctions">Doctors</span>
+                        <span class="contentFunctions">
+                          Here you can <b>view your working hours</b>.
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="appointments">
+                    <div id="appointmentsUser">
+                      <p>
+                        <span class="titleFunctions">Users</span>
+                        <span class="contentFunctions">
+                          Here you can <b>view your past and future appointments</b>. Also you can <b>cancel future appointments</b> (1 week before the date).
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="settings">
+                    <div id="settingsUser">
+                      <p>
+                        <span class="titleFunctions">Users</span>
+                        <span class="contentFunctions">
+                          Here you can <b>set a specific Doctor</b> for each health area.
+                        </span>
+                      </p>
+                    </div>
+                    <div id="settingsDoctor">
+                      <p>
+                        <span class="titleFunctions">Doctors</span>
+                        <span class="contentFunctions">
+                          Here you can <b>customize / set your personal settings</b> like:
+                            <ul style="display:inline-block;">
+                              <li>Auto send an email every new appoinment</li>
+                            </ul>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
   					</div>
 	  			</div>
   			</div>
@@ -475,7 +544,7 @@
   				</div>
   				<style>
   					#coverage{
-              background: url('img/background1.png');
+              /*background: url('img/background1.png');*/
             }
             #coverage img {
 						display: block;
@@ -494,11 +563,6 @@
 						text-align: center;
 					}
 					.img-circle {
-            /*background:url("img/connection.png") no-repeat;
-          .img-circle {
-            background: url("img/connection.png") no-repeat;
-            background-size:128px 128px;
-            background-position: center;*/
             height:200px;
             width:200px;
             border-radius:50%;
@@ -506,30 +570,6 @@
             margin:auto;
             background-color: white;
 					}
-          /*.img-circle1 {
-            background:url("img/clock.png") no-repeat;
-          }
-          .img-circle1 {
-            background: url("img/clock.png") no-repeat;
-            background-size:128px 128px;
-            background-position: center;
-            height:200px;
-            width:200px;
-            border-radius:50%;
-            overflow:hidden;
-            margin:auto;
-            background-color: white;
-          }
-          .img-circle2 {
-            background: url("img/world.png") no-repeat;
-            background-size:128px 128px;
-            background-position: center;
-            height:200px;
-            width:200px;
-            border-radius:50%;
-            overflow:hidden;
-            margin:auto;
-          }*/
   				</style>
   				<div class="row">
             <style>
@@ -543,15 +583,15 @@
             </style>
   					<div class="col-sm-4 col-md-4">
   						<img class="img-circle" src="img/connection.png">
-              <span class="textCoverage">Book <b>anyone</b></span>
+              <span class="textCoverage">Book <b class="darkBlue">anyone</b></span>
   					</div>
   					<div class="col-sm-4 col-md-4">
   						<img class="img-circle" src="img/clock.png">
-              <span class="textCoverage">Book <b>anytime</b></span>
+              <span class="textCoverage">Book <b class="darkBlue">anytime</b></span>
   					</div>
   					<div class="col-sm-4 col-md-4">
   						<img class="img-circle" src="img/globe.png">
-              <span class="textCoverage">Book <b>anywhere</b></span>
+              <span class="textCoverage">Book <b class="darkBlue">anywhere</b></span>
   					</div>
 	  			</div>
   			</div>
@@ -694,8 +734,7 @@
     <script>
       $(document).ready(function($) {
           $('.carousel').carousel();
-          /*Desactive popover temp
-          $('img').popover();*/
+          $('img').popover();
 
           $(".navbar-nav a.anchor").click(function(event) {
               event.preventDefault(); 
@@ -736,6 +775,30 @@
           alert("Please fill all the fields");
           return false;
         }
+      });
+    </script>
+    <script>
+      function changeTabPanel(screenWidth){
+        if(screenWidth < 1020){
+          //Remove class tab-left
+          $("#panelFunctionalities .panel").removeClass("tabs-left");
+          if(screenWidth < 436){
+            $("#panelFunctionalities .panel a[href=#settings]").html("+");
+          }
+          else{
+            $("#panelFunctionalities .panel a[href=#settings]").html("Settings");
+          }
+        }
+        else {
+          //Add class tab-left
+          $("#panelFunctionalities .panel").addClass("tabs-left");
+        }
+      }
+      $(document).ready(function(){
+        changeTabPanel($(this).width());
+      });
+      $(window).resize(function() {
+          changeTabPanel($(this).width());
       });
     </script>
   </body>
