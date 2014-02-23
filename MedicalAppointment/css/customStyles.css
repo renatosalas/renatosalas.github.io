@@ -1,0 +1,305 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+.container-fluid {
+    overflow-x: hidden !important;
+}
+#menuBar {
+	height: 51px;
+}
+    #menuBar, #menuBar .navbar, #menuBar .navbar-header,
+    #menuBar ul.nav.navbar-nav, #menuBar .navbar-default .navbar-nav>li,
+    #menuBar .navbar-default .navbar-nav>li>a {
+        min-height: 70px;
+    }
+    .navbar-brand img {
+        height: 60px;
+        margin-top: -10px;
+    }
+    #menuBar .navbar-default .navbar-nav>li>a {
+        padding-top: 25px;
+    }
+    .navbar-collapse.collapse.in .navbar-nav>li, .navbar-collapse.collapse.in .navbar-nav>li>a {
+        min-height: 48px !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+#mainBanner {
+	padding: 0px !important;
+    height: 400px;
+    background-color: #0C78AE;
+}
+    #mainBanner #mediAppVideo {
+        opacity: 0.7;
+    }
+#whatItIs, #pricing, #functionalities, #benefits, #coverage {
+	min-height: 70px;
+	padding: 15px !important;
+	border-bottom: solid 1px #CCC;
+}
+#whatItIs {
+	height: 100%;
+}
+	#contentBox {
+		margin-top: -30px;
+		padding: 10px 15px;
+		height: 150px;
+		width: 30%;
+		border-radius: 12px;
+		background: rgba(0,0,0,0.25);
+			background: -moz-linear-gradient(left, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 100%);
+			background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0.25)), color-stop(100%, rgba(0,0,0,0.25)));
+			background: -webkit-linear-gradient(left, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 100%);
+			background: -o-linear-gradient(left, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 100%);
+			background: -ms-linear-gradient(left, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 100%);
+			background: linear-gradient(to right, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
+			font-size: 15px;
+	}
+		.headerContentBox {
+			font-size: 21px;
+			font-weight: 600;
+		}
+		.carousel-indicators {
+			bottom: -20px !important;
+		}
+		.carousel-control {
+			opacity: 0;
+			background: none !important;
+		}
+		.carousel-control:hover {
+			opacity: 0.9;
+		}
+			.carousel-control span {
+				font-size: 20px !important;
+				font-weight: 200;
+			}
+			.left.carousel-control {
+				text-align: left;
+				margin-left: -10px;
+			}
+			.right.carousel-control {
+				text-align: right;
+				margin-right: -22px;
+			}
+#pricing {
+	background: url('img/background.png');
+}
+	#userPrice img, #companyPrice img {
+		display: block;
+		margin: 0 auto;
+	}
+    #userPrice > img, #companyPrice > img {
+      cursor: pointer;
+    }
+	.headerTopic {
+		font-size: 30px;
+		font-weight: 600;
+	}
+	.textPrice {
+		display: block;
+		text-align: center;
+		font-size: 35px;
+		font-weight: 300;
+		letter-spacing: 2px;
+	}
+#benefits{
+  background: url('img/background.png');
+}
+    #benefits ul {
+        list-style-image: url('img/checkMark.png');
+    }
+        #benefitsUser ul, #benefitCompany ul {
+            font-weight: 300;
+            font-size: 1.3em;
+        }
+    #benefitsUser .vertical-divider {
+        border-right: 1px solid #CCC;
+        height: 70px;
+    }
+.titleFunctions {
+    font-weight: 300px;
+    font-size: 20px;
+    display: block;
+}
+.contentFunctions {
+    padding-left: 20px;
+}
+#panelFunctionalities .tab-content {
+    display: inline-block;
+}
+#panelFunctionalities .panel {
+    min-height: 210px;
+    padding: 20px;
+}
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
+}
+.tab-content {
+    padding: 10px;
+}
+    .tab-content > .tab-pane,
+    .pill-content > .pill-pane {
+      display: none;
+    }
+    .tab-content > .active,
+    .pill-content > .active {
+      display: block;
+    }
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+}
+    .tabs-left > .nav-tabs > li {
+      float: none;
+    }
+    .tabs-left > .nav-tabs > li > a {
+      min-width: 74px;
+      margin-right: 0;
+      margin-bottom: 3px;
+      margin-right: -1px;
+      -webkit-border-radius: 4px 0 0 4px;
+         -moz-border-radius: 4px 0 0 4px;
+              border-radius: 4px 0 0 4px;
+    }
+    .tabs-left > .nav-tabs > li > a:hover,
+    .tabs-left > .nav-tabs > li > a:focus {
+      border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+    }
+    .tabs-left > .nav-tabs .active > a,
+    .tabs-left > .nav-tabs .active > a:hover,
+    .tabs-left > .nav-tabs .active > a:focus {
+      border-color: #ddd transparent #ddd #ddd;
+      border-right-color: #ffffff;
+    }
+#coverage img {
+    display: block;
+    margin: 0 auto;
+    border: 3px solid #FFF;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    margin-top: 20px;
+}
+    #coverage img:hover {
+        box-shadow: 0 0px 8px #428bca;
+    }
+#coverage p {
+    padding-top: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+.textCoverage {
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+.img-circle {
+    height:200px;
+    width:200px;
+    border-radius:50%;
+    overflow:hidden;
+    margin:auto;
+    background-color: white;
+}
+#titleBanner {
+    display: block;
+    z-index:0;
+    position:absolute;
+    margin-left: -15px;
+    width:100%;
+    text-align: center;
+    font-size: 60px;
+    top:70px;
+    color: #FFF;
+}
+#getStartedButton {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 200px;
+}
+#titleBanner, #getStartedButton {
+    z-index:2;
+}
+.btn.btn-xlg {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+}
+#screenApp {
+    text-align: center;
+}
+#screenApp img {
+    max-height: 400px;
+    padding-top: 20px;
+}
+.darkBlue {
+    color: #0b77bf;
+}
+.darkGreen {
+  color: #419113;
+}
+@media (max-width: 600px){
+  #titleBanner {
+    font-size: 30px;
+  }
+}
+@media (min-width: 600px) and (max-width: 670px){
+  #titleBanner {
+    font-size: 40px;
+  }
+}
+@media (min-width: 670px) and (max-width: 790px){
+  #titleBanner {
+    font-size: 45px;
+  }
+}
+@media (min-width: 790px) and (max-width: 950px){
+  #titleBanner {
+    font-size: 50px;
+  }
+}
+#footer {
+    padding: 10px 0 10px 0;
+    background: url('http://api.thumbr.it/whitenoise-45x45.png?background=e6e6e6ff&noise=626262&density=15&opacity=15');
+    border-top:1px solid rgba(0,0,0,0.1);
+    box-shadow:0 -1px 1px rgba(255,255,255,0.5);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 200;
+    text-align: center;
+}
+#footer span {
+    line-height: 32px;
+}
+#footer .teamIcon {
+    float: right;
+    opacity: 0.7;
+}
+#footer .teamIcon:hover {
+    opacity: 1;
+}
+#teamModal .modal-header,
+#contactModal .modal-header {
+  padding-bottom: 10px;
+}
+#teamModal .modal-header img, #teamModal .modal-title,
+#contactModal .modal-header img, #contactModal .modal-title {
+  display: inline-block;
+}
+#teamModal .modal-footer {
+  margin-top: 0px;
+}
+a.linkedIn {
+    display: inline-block;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    background: url('img/LinkedIn-Logo.png');
+}
+.noBullets {
+    list-style: none;
+}
