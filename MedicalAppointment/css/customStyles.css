@@ -83,7 +83,7 @@ body {
 				margin-right: -22px;
 			}
 #pricing {
-	background: url('img/background.png');
+	background: url('../img/background.png');
 }
 	#userPrice img, #companyPrice img {
 		display: block;
@@ -104,10 +104,10 @@ body {
 		letter-spacing: 2px;
 	}
 #benefits{
-  background: url('img/background.png');
+  background: url('../img/background.png');
 }
     #benefits ul {
-        list-style-image: url('img/checkMark.png');
+        list-style-image: url('../img/checkMark.png');
     }
         #benefitsUser ul, #benefitCompany ul {
             font-weight: 300;
@@ -298,7 +298,7 @@ a.linkedIn {
     margin-right: 5px;
     width: 20px;
     height: 20px;
-    background: url('img/LinkedIn-Logo.png');
+    background: url('../img/LinkedIn-Logo.png');
 }
 .noBullets {
     list-style: none;
