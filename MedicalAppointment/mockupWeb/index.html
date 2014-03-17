@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Medical Appointment</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="js/chosen/chosen.css">
+    <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
+    <link href="css/datepicker.css" rel="stylesheet" type="text/css"/>  
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+      //Generate dynamic hours
+      function generateHours(){
+        var hour = 8;
+        var min = 0;
+        var time = "am";
+        var targetComponent = document.getElementById("time").getElementsByTagName("select")[0];
+        for(var i=0; i<26; i++){
+          min += 30;
+          if(hour >= 11 && min > 59){
+            time = "pm";
+          }
+          if(min < 60){
+            //imprime normal  hour : min : time
+            var s = "<option>"+hour+":"+min+" "+time+"</option>";
+            targetComponent.innerHTML += s;
+          }
+          else {
+            hour++;
+            min = 0;
+            var s2 = "<option>"+hour+":"+min+"0 "+time+"</option>";
+            targetComponent.innerHTML += s2;
+          }
+        }
+      }
+    </script>
+    
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: Arial;
+      }
+      /*.canvasFull {
+        background-color: #000;
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }*/
+      .canvasSection {
+        width: 960px;
+        height: 564px;
+        background-color: #CCC;
+        margin: 22px auto;
+      }
+        #createAppointment, #mapSection, #confirmationSection {
+          margin: 42px 0px;
+          float: left;
+        }
+        #createAppointment, #confirmationSection {
+          margin-top: 42px;
+          margin-left:71px;
+          width: 370px;
+          margin-right: 128px;
+        }
+          .titleSection, .contentSection, 
+          .contentSection select, .contentSection button {
+            width: 100%;
+            text-align: center;
+          }
+          .titleSection {
+            padding-bottom: 25px;
+          }
+            .titleSection span {
+              color: #286bcc;
+              font-weight: bold;
+              font-size: 38px;
+              line-height: 60px;
+              text-shadow: -5px 0px 2px #FFFFFF;
+            }
+          .contentSection select {
+            height: 50px;
+            margin-bottom: 25px;
+          }
+            a.chosen-single.chosen-default,
+            a.chosen-single.chosen-single-with-deselect,
+            input.selectConcept {
+              height: 50px;
+              line-height: 50px;
+            }
+              a.chosen-single.chosen-default span,
+              a.chosen-single.chosen-single-with-deselect span,
+              input.selectConcept {
+                font-size: 16px;
+              }
+            abbr.search-choice-close {
+              margin-top: 8px;
+              padding-right: 20px;
+            }
+            .selectConcept {
+                border: 1px solid #ccc;
+                width: 100%;
+                height: 50px;
+                /*border-radius: 3px;*/
+                border-radius: 5px;
+                /*overflow: hidden;*/
+                background: #fafafa url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 96% 50%;
+                margin-bottom: 25px;
+            }
+            .selectConcept select {
+                padding: 5px 8px;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                background-image: none;
+                -webkit-appearance: none;
+                cursor: pointer;
+            }
+            .selectConcept select:focus, input.selectConcept:focus {
+                outline: none;
+            }
+            .selectConcept.mini {
+              width: 176px;
+              display: inline-block;
+              background-position: 90% 50% !important;
+            }
+            .selectConcept.marginRight14 {
+              margin-right: 14px;
+            }
+            input.selectConcept {
+              text-align: center;
+              cursor: pointer;
+              border: 1px solid #aaa;
+              color: #000;
+              background-clip: padding-box;
+            }
+              input.selectConcept::-webkit-input-placeholder {
+                color: #999;
+              }
+              input.selectConcept:-moz-placeholder {
+                color: #999;
+              }
+          #confirmationBookAppointmentButton {
+            font-size: 25px;
+            height: 62px;
+          }
+          #bookAppointment, #confirmationBookAppointmentButton {
+            margin-top: 20px;
+            width: 100%;
+          }
+          #bookAppointment {
+            height: 79px;
+            background: url('img/bookAppointmentButton.png');
+            background-size: 100% auto;
+            cursor: pointer;
+          }
+            #bookAppointment:hover {
+              background: url('img/bookAppointmentButtonHover.png');
+              background-size: 100% auto;
+            }
+        #mapSection {
+          width: 320px;
+          height: 480px;
+        }
+        .closeModal {
+          margin-left: 25px;
+          cursor: pointer;
+        }
+
+    </style>
+    <!-- Button trigger modal-- icons from main page que hara Paco -->
+    <button id="openBookAppointmentModal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bookAppointmentModal">
+      Launch demo modal
+    </button>
+    <div class="modal fade show" id="bookAppointmentModal" tabindex="-1">
+      <div class="canvasSection">
+        <div id="createAppointment">
+          <div class="titleSection">
+            <span>Create Appointment</span>
+          </div>
+          <div class="contentSection">
+
+            <div id="healthArea" class="selectConcept">
+              <select name="healthArea" data-placeholder="Health Area" class="chosen-select-deselect" tabindex="12">
+                <option value=""></option>
+                <option>Allergy & Immunology</option>
+                <option>Cardiology</option>
+                <option>Colon & Rectal Surgery</option>
+                <option>Dermatology</option>
+                <option>Endocrinology</option>
+                <option>Family Medicine</option>
+                <option>Gastroenterology</option>
+                <option>Geriatric Medicine</option>
+                <option>Geriatric Psychiatry</option>
+                <option>Hand Surgery</option>
+                <option>Hematology</option>
+                <option>Infectious Diseases</option>
+                <option>Neurosurgery</option>
+                <option>Nephrology</option>
+                <option>OB/GYN</option>
+                <option>Oncology</option>
+                <option>Ophthalmology</option>
+                <option>Orthopedic Surgery</option>
+                <option>Pathology</option>
+                <option>Pediatrics</option>
+                <option>Plastic Surgery</option>
+                <option>Psychiatry</option>
+                <option>Pulmonary Diseases</option>
+                <option>Radiology</option>
+                <option>Rheumatology</option>
+                <option>Sports Medicine</option>
+                <option>Surgical Critical Care</option>
+                <option>Cardiac Surgeon</option>
+                <option>Urology</option>
+              </select>
+            </div>
+
+            <div id="clinic" class="selectConcept">
+              <select name="clinic" data-placeholder="Clinic" class="chosen-select-deselect" tabindex="12">
+                <option value=""></option>
+                <optgroup label="Cancer">
+                  <option>University of Texas MD Anderson Cancer Center - Houston, TX</option>
+                  <option>Memorial Sloan-Kettering Cancer Center - New York, NY</option>
+                  <option>Mayo Clinic - Rochester, MN</option>
+                </optgroup>
+
+                <optgroup label="Cardiology">
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>New York-Presbyterian University Hospital of Columbia and Cornell - New York, NY</option>
+                </optgroup>
+
+                <optgroup label="Diabetes">
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                  <option>Massachusetts General Hospital - Boston, MA</option>
+                </optgroup>
+
+                <optgroup label="Ear, Nose & Throat">
+                  <option>Johns Hopkins Hospital - Baltimore, MD</option>
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>University of Texas MD Anderson Cancer Center - Houston, TX</option>
+                </optgroup>
+
+                <optgroup label="Gastroenterology">
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                  <option>Johns Hopkins Hospital - Baltimore, MD</option>
+                </optgroup>
+
+                <optgroup label="Geriatrics">
+                  <option>Johns Hopkins Hospital - Baltimore, MD</option>
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>UCLA Medical Center - Los Angeles, CA</option>
+                </optgroup>
+
+                <optgroup label="Gynecology">
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>Brigham and Women's Hospital - Boston, MA</option>
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                </optgroup>
+
+                <optgroup label="Neprology">
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                  <option>New York-Presbyterian University Hospital of Columbia and Cornell - New York, NY</option>
+                </optgroup>
+
+                <optgroup label="Neurology">
+                  <option>Johns Hopkins Hospital - Baltimore, MD</option>
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>New York-Presbyterian University Hospital of Columbia and Cornell - New York, NY</option>
+                </optgroup>
+
+                <optgroup label="Ophthalmology">
+                  <option>Bascom Palmer Eye Institute at the University of Miami - Miami, FL</option>
+                  <option>Wills Eye Hospital - Philadelphia, PA</option>
+                  <option>Wilmer Eye Institute, Johns Hopkins Hospital - Baltimore, MD</option>
+                </optgroup>
+
+                <optgroup label="Orthopedics">
+                  <option>Hospital for Special Surgery - New York, NY</option>
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                </optgroup>
+
+                <optgroup label="Psychiatry">
+                  <option>McLean Hospital - Belmont, MA</option>
+                  <option>Johns Hopkins Hospital - Baltimore, MD</option>
+                  <option>Massachusetts General Hospital - Boston, MA</option>
+                </optgroup>
+
+                <optgroup label="Pulmonology">
+                  <option>Mayo Clinic - Rochester, MN</option>
+                  <option>National Jewish Health, Denver-University of Colorado Hospital - Aurora, CO</option>
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                </optgroup>
+
+                <optgroup label="Rehabilitation">
+                  <option>Rehabilitation Institute of Chicago - Chicago, IL</option>
+                  <option>Kessler Institute for Rehabilitation - West Orange, NJ</option>
+                  <option>TIRR Memorial Hermann - Houston, TX</option>
+                </optgroup>
+
+                <optgroup label="Rheumatology">
+                  <option>Johns Hopkins Hospital - Baltimore, MD</option>
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                  <option>Mayo Clinic - Rochester, MN</option>
+                </optgroup>
+
+                <optgroup label="Urology">
+                  <option>Johns Hopkins Hospital - Baltimore, MD</option>
+                  <option>Cleveland Clinic - Cleveland, OH</option>
+                  <option>Mayo Clinic - Rochester, MN</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div id="doctor" class="selectConcept">
+              <select name="doctor" data-placeholder="Doctor" class="chosen-select-deselect" tabindex="12">
+                <option value=""></option>
+                <optgroup label="Allergy & Immunology">
+                  <option>Aarons, Alan</option>
+                  <option>Abbosh, Jasmine</option>
+                  <option>Abels, Robert</option>
+                </optgroup>
+
+                <optgroup label="Cardiac">
+                  <option>Abdalla, Ismaile Sherine</option>
+                  <option>Abedin, Moeen</option>
+                  <option>Zimetbaum, Peter</option>
+                </optgroup>
+
+                <optgroup label="Dermatology">
+                  <option>Ades, Albert</option>
+                  <option>Ahkami, Rosaline</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <input type="text" name="date" id="datepicker" placeholder="Date" class="selectConcept mini marginRight14">
+
+            <div id="time" class="selectConcept mini">
+              <select name="time" data-placeholder="Time" class="chosen-select-deselect" tabindex="12">
+                <option value=""></option>
+              </select>
+            </div>
+
+            <div id="bookAppointment"></div>
+
+          </div>
+        </div>
+        <div id="confirmationSection" class="hidden">
+          <div class="backButton">
+            <i class="glyphicon glyphicon-circle-arrow-left"></i>
+          </div>
+          <div class="titleSection">
+            <span>Confirmation</span>
+          </div>
+          <style>
+
+          /****/
+          .backButton i {
+            font-size: 25px;
+            background-color: #FFF;
+            border-radius: 100%;
+            float:left;
+            margin-top:15px;
+            cursor: pointer;
+          }
+            .summarySection {
+              width: 370px;
+            }
+              .summarySection table {
+                width: 100%;
+                text-align: left;
+              }
+                .summarySection table th {
+                  color: #FFF;
+                  background-color: #286bcc;
+                  padding-left: 10px;
+                  height: 30px;
+                  font-size: 14px;
+
+                  -moz-border-radius: 10px 10px 0px 0px;
+                  -webkit-border-radius: 10px 10px 0px 0px;
+                  border-radius: 10px 10px 0px 0px;
+                }
+                .summarySection table tbody tr {
+                  border-bottom: 1px solid #ddd;
+                }
+                .summarySection table td {
+                  background-color: #FFF;
+                  padding-left: 15px;
+                  height: 39px;
+                  font-size: 17px;
+                }
+                  .summarySection table td span.labelSummary {
+                    font-weight: bold;
+                  }
+          </style>
+          <div class="contentSection">
+            <div class="summarySection">
+              <table class="table-hover">
+                <thead>
+                  <th>Summary Appointment</th>
+                </thead>
+                <tr>
+                  <td>
+                    <span class="labelSummary confirmationHealthArea">Health Area: </span>
+                    <span class="valueSummary">Cardiology</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="labelSummary confirmationClinic">Clinic: </span>
+                    <span class="valueSummary">New York Clinic</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="labelSummary confirmationDoctor">Doctor: </span>
+                    <span class="valueSummary">Juan L&oacute;pez Figueroa</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="labelSummary confirmationDate">Date: </span>
+                    <span class="valueSummary">May 1st 2014</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="labelSummary confirmationTime">Time: </span>
+                    <span class="valueSummary">18:30 pm</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="labelSummary confirmationCost">Cost (Docto Fee): </span>
+                    <span class="valueSummary">Free</span>
+                  </td>
+                </tr>
+              </table>
+              <button id="confirmationBookAppointmentButton" type="button" class="btn btn-success">
+                Accept
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="mapSection">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+        <img class="closeModal" data-dismiss="modal" src="img/close.png">
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="bbookAppointmentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Appointment</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/chosen/chosen.jquery.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript">
+
+      $(document).ready(function(){
+        //Necessary to load and apply all the css
+        $("#bookAppointmentModal").removeClass("show");
+      });
+
+      //Initialize datepicker
+      $(function() {
+        $(function(){
+          $('#datepicker').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            //dateFormat: 'dd MM yy',
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          });
+        });
+        $( "#datepicker" ).datepicker( "option", "showAnim", "blind" );
+      });
+
+      //Initialize generation Hours
+      generateHours();
+      
+      //Initialize custom select
+      $(".chosen-select-deselect").chosen({
+        allow_single_deselect: true
+      });
+
+      $("#bookAppointment").click(function(){
+        var healthArea = $("[name=healthArea]").val();
+        var clinic = $("[name=clinic]").val();
+        var doctor = $("[name=doctor]").val();
+        var date = $("[name=date]").val();
+        var time = $("[name=time]").val();
+        if(healthArea != "" && clinic != "" && doctor != "" && date != "" && time != ""){
+          $("#createAppointment").addClass("hidden");
+          $("#confirmationSection").removeClass("hidden");
+        }
+        else {
+          alert("Please fill all the fields.");
+          return false;
+        }
+      });
+
+      $(".backButton i").click(function(){
+        $("#createAppointment").removeClass("hidden");
+        $("#confirmationSection").addClass("hidden");
+      });
+
+      $("#confirmationBookAppointmentButton").click(function(){
+        alert("Your appointment has been reserved.");
+      });
+
+      $("#time ul.chosen-results").css("max-height",100);
+    </script>
+  </body>
+</html>
