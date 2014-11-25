@@ -5,7 +5,7 @@ $(document).ready(function(){
 	/*Custom contextmenu*/
 	$(function(){
 	     $(document).contextMenu({
-	        selector: '.component.clone', 
+	        selector: '.clone', 
 	        items: {
 	            "delete": { 
 	            	name: "Eliminar", 
@@ -276,81 +276,51 @@ $(document).ready(function(){
 
 	/*Check connectivity*/
 	var verifyConnectivity = function(side){
-		var check;
-		var currentX,
-			currentY;
-		var eToSide;
-		$(".component.clone").each(function(){
-			check = $(this).attr("check");
-			currentX = $(this).position().left;
-			currentY = $(this).position().top;
+		//Update General Values
+		var volT,
+			corrT,
+			capEq,
+			resEq,
+			cargaT,
+			energiaAl;
+		volT = calcularVoltaje();
+		corrT = calcularCorriente(1, 1);
+		capEq = calcularCapacitanciaParalelo(1, 1);
+		resEq = calcularResistenciaParalelo(1, 1);
+		cargaT = calcularCargaTotal(1, 1);
+		energiaAl = calcularEnergiaAlmacenadaTotal(1,1 );
 
-			if(side == "left"){
-				eToSide = document.elementFromPoint(currentX-50, currentY);
-			}else if(side == "right"){
-				eToSide = document.elementFromPoint(currentX+50, currentY);
-			}else if(side == "up"){
-				eToSide = document.elementFromPoint(currentX, currentY+50);
-			}else if(side == "down"){
-				eToSide = document.elementFromPoint(currentX, currentY-50);
+		updateGeneralValues(volT, corrT, capEq, resEq, cargaT, energiaAl);
+
+		var elements = {
+			array: obtenerElementos(),
+			sim: {
+				"cableHorizontal": "1",
+				"cableVertical": "2",
+				"cableDownRight": "3",
+				"cableDownLeft": "4",
+				"cableUpLeft": "5",
+				"cableUpRight": "6",
+				"cableTUp": "9",
+				"cableTDown": "A",
+				"cableTRight": "B",
+				"cableTLeft": "C",
+				"bateriaVerticalUp": "7",
+				"bateriaHorizontalRight": "8",
+				"resistorHorizontal": "R",
+				"resistorVertical": "M",
+				"capacitorVertical": "K" 
 			}
+		}
 
-			//Detect img clone (vecino)
-			if($(eToSide).prop("tagName") == "IMG"){
-				//console.log("Vecino en " + side);
-			}
-			
-			//Check recursivity four sides (up|down|left|right)
-			/*verifyConnectivity("up");
-			verifyConnectivity("down");
-			verifyConnectivity("right");*/
+		var circuito = new CircuitoCorrecto(elements);
+		var conectado = circuito.circuitoConectado(circuito.posBateria.y, circuito.posBateria.x);
+		
+		if(conectado){
+			alert("Conectado!");
+		}
 
-			//Update General Values
-			var volT,
-				corrT,
-				capEq,
-				resEq,
-				cargaT,
-				energiaAl;
-			volT = calcularVoltaje();
-			corrT = calcularCorriente(1, 1);
-			capEq = calcularCapacitanciaParalelo(1, 1);
-			resEq = calcularResistenciaParalelo(1, 1);
-			cargaT = calcularCargaTotal(1, 1);
-			energiaAl = calcularEnergiaAlmacenadaTotal(1,1 );
-
-			updateGeneralValues(volT, corrT, capEq, resEq, cargaT, energiaAl);
-			//console.log(volT);
-
-			var elements = {
-				array: obtenerElementos(),
-				sim: {
-					"cableHorizontal": "1",
-					"cableVertical": "2",
-					"cableDownRight": "3",
-					"cableDownLeft": "4",
-					"cableUpLeft": "5",
-					"cableUpRight": "6",
-					"cableTUp": "9",
-					"cableTDown": "A",
-					"cableTRight": "B",
-					"cableTLeft": "C",
-					"bateriaVerticalUp": "7",
-					"bateriaHorizontalRight": "8",
-					"resistorHorizontal": "R",
-					"resistorVertical": "M",
-					"capacitorVertical": "K" 
-				}
-			}
-
-			//console.log(elements.array);
-			var circuito = new CircuitoCorrecto(elements);
-			//console.log(circuito.posBateria.x + " " + circuito.posBateria.y);
-			var conectado = circuito.circuitoConectado(circuito.posBateria.y, circuito.posBateria.x);
-			if(conectado){
-				alert("Conectado!");
-			}
-		});
+		//console.log(elements.array);
 	};
 
 	/*Hide Properties via Helper Button*/
@@ -488,7 +458,7 @@ $(document).ready(function(){
 			cols;
 		var result = [];
 
-		e = $(".component.clone");
+		e = $(".clone");
 
 		grid = $(".grid");
 		rows = grid.find("tr").size();
@@ -507,18 +477,6 @@ $(document).ready(function(){
 				cPosX = c*w;
 				cPosY = r*w;
 
-				/*e.each(function(){
-					//Element found
-					if($(this).position().left == cPosX &&
-					   $(this).position().top == cPosY){
-						result[r][c] = detectSubType($(this));
-						return false; //CREO QUE AQUI ESTA EL ERROR
-					}
-					else{
-						result[r][c] = 0;
-					}
-				});*/
-
 				var elementAt = getElementsAt(cPosY, cPosX);
 				if(elementAt[0] != undefined){
 					result[r][c] = detectSubType($(elementAt[0]));
@@ -528,14 +486,14 @@ $(document).ready(function(){
 			}
 		}
 
-		//console.log(result);
+		console.log(result);
 
 		return result;
 	}
 
 	function getElementsAt(top, left){
 	    return $("#canvas")
-	    		   .find("img")
+	    		   .find(".clone")
 	               .filter(function() {
 	                           return $(this).position().top == top 
 	                                    && $(this).position().left == left;
