@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Circuitos</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.contextMenu.css">
+
+	</head>
+	<body>
+		<div id="properties">
+			<div class="propertiesGeneral shadow">
+				<p class="title lead">Circuito</p>
+				<div class="properties">
+					<div class="voltaje">
+						<span class="label">Voltaje (V): </span>
+						<span class="value">120</span>&nbsp;<abbr title="Volts">V</abbr>
+					</div>
+					<div class="corriente">
+						<span class="label">Corriente (I): </span>
+						<span class="value">24</span>&nbsp;<abbr title="Amperes">A</abbr>
+					</div>
+					<div class="capacitancia">
+						<span class="label">Capacitancia (C): </span>
+						<span class="value">30</span>&nbsp;<abbr title="Farads">F</abbr>
+					</div>
+					<div class="resistencia">
+						<span class="label">Resistencia (R): </span>
+						<span class="value">52</span>&nbsp;<abbr title="Ohms">&Omega;</abbr>
+					</div>
+					<div class="carga">
+						<span class="label">Carga (Q): </span>
+						<span class="value">63</span>&nbsp;<abbr title="Coulombs">W</abbr>
+					</div>
+					<div class="energiaAlmacenada">
+						<span class="label">Energ&iacute;a <abbr title="Almacenada">Alm</abbr> (J): </span>
+						<span class="value">51</span>&nbsp;<abbr title="Joules">W</abbr>
+					</div>
+				</div>
+			</div>
+			<div class="propertiesElement shadow hidden">
+				<p class="title lead">Element</p>
+				<i class="helper glyphicon glyphicon-remove"></i>
+				<div class="properties">
+					<div class="cable hidden">
+						<div class="material">
+							<span class="label">Material: </span>
+							<input type="text" class="value" value="string">
+						</div>
+					</div>
+					<div class="bateria hidden">
+						<div class="voltaje">
+							<span class="label">Voltaje (V): </span>
+							<input class="value" value="double">&nbsp;<abbr title="Volts">V</abbr>
+						</div>
+						<div class="resistenciaInterna">
+							<span class="label">Resistencia <br>Interna (r): </span>
+							<input class="value" value="double">&nbsp;<abbr title="Ohms">&Omega;</abbr>
+						</div>
+					</div>
+
+					<div class="capacitor hidden">
+						<div class="capacitancia">
+							<span class="label">Capacitancia (C): </span>
+							<input class="value" value="double">&nbsp;<abbr title="Farads">F</abbr>
+						</div>
+					</div>
+
+					<div class="resistor hidden">
+						<div class="resistencia">
+							<span class="label">Resistencia (R): </span>
+							<input class="value" value="double">&nbsp;<abbr title="Ohms">&Omega;</abbr>
+						</div>
+					</div>
+
+					<div class="bombilla hidden">
+						<div class="potencia">
+							<span class="label">Potencia (P): </span>
+							<input class="value" value="double">&nbsp;<abbr title="Watts">W</abbr>
+						</div>
+					</div>
+
+					<div class="led hidden">
+						<div class="potencia">
+							<span class="label">Potencia (P): </span>
+							<input class="value" value="double">&nbsp;<abbr title="Watts">W</abbr>
+						</div>
+					</div>
+				</div>
+				<button class="updateButton center-block btn btn-default">Actualizar</button>
+				<i class="notification hidden glyphicon glyphicon-ok-circle"></i>
+			</div>
+		</div>
+		<div id="canvas"></div>
+		<div id="controls">
+			<div class="controls-inner center-block">
+				<img id="component1" class="component drag" src="img/components/cable_horizontal-50x50.svg" rel="tooltip" title="Cable" type="cable"subtype="cableHorizontal" check="left|right">
+					<div id="subComponents1" class="subcomponents hide">
+						<img id="subcomponent1" class="component drag" src="img/components/cable_vertical-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableVertical" check="up|down">
+						<img id="subcomponent2" class="component drag" src="img/components/cable_upperLeft-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableUpLeft" check="down|right">
+						<img id="subcomponent3" class="component drag" src="img/components/cable_downLeft-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableDownLeft" check="up|right">
+						<img id="subcomponent4" class="component drag" src="img/components/cable_upperRight-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableUpRight" check="down|left">
+						<img id="subcomponent5" class="component drag" src="img/components/cable_downRight-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableDownRight" check="up|left">
+						<img id="subcomponent6" class="component drag" src="img/components/cable_TDown-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableTDown">
+						<img id="subcomponent7" class="component drag" src="img/components/cable_TUp-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableTUp">
+						<img id="subcomponent8" class="component drag" src="img/components/cable_TRight-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableTRight">
+						<img id="subcomponent9" class="component drag" src="img/components/cable_TLeft-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="cableTLeft">
+					</div>
+				<img id="component2" class="component drag" src="img/components/bateria_vertical-50x50.svg" rel="tooltip" title="Bater&iacute;a" type="bateria" subtype="bateriaVerticalUp">
+					<div id="subComponents2" class="subcomponents hide">
+						<img id="subcomponent10" class="component drag" src="img/components/bateria_horizontal-50x50.svg" rel="tooltip" title="Cable" type="cable" subtype="bateriaHorizontalRight" check="up|down">
+					</div>
+				<img id="component3" class="component drag" src="img/components/capacitor-50x50.svg" rel="tooltip" title="Capacitor" type="capacitor" subtype="capacitorVertical">
+				<div id="component4" class="component-wrapper drag" rel="tooltip" title="Resistor" type="resistor" subtype="resistorHorizontal">
+					<img class="component strech-3-5" src="img/components/resistencia.svg">
+				</div>
+					<div id="subComponents4" class="subcomponents hide">
+						<div id="component4-1" class="component-wrapper drag" rel="tooltip" title="Resistor" type="resistor" subtype="resistorVertical">
+							<img class="component strech-3-5 rotate-90" src="img/components/resistencia.svg">
+						</div>
+					</div>
+				<img id="component5" class="hidden component drag" src="img/components/foco_on.svg" rel="tooltip" title="Bombilla" type="bombilla" subtype="bombillaVertical">
+				<img id="component6" class="hidden component drag" src="img/components/led.svg" rel="tooltip" title="LED" type="led" subtype="ledVertical">
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.contextMenu.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.position.js"></script>
+		<script type="text/javascript" src="js/CircuitoCorrecto.class.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

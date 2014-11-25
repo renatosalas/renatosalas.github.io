@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<svg width="70.964" height="251.064" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="-0.117959" y1="-0.117959" x2="1.000005" x1="0.000008" id="XMLID_1_">
+   <stop stop-color="#f8130d" offset="0"/>
+   <stop stop-color="#f74431" offset="0.1899"/>
+   <stop stop-color="#f79680" offset="0.5088"/>
+   <stop stop-color="#f8130d" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="-0.117959" y1="-0.117959" x2="1.00001" x1="0.000002" id="XMLID_2_">
+   <stop stop-color="#dbdb0c" offset="0"/>
+   <stop stop-color="#e8e94c" offset="0.2315"/>
+   <stop stop-color="#f6f89f" offset="0.5088"/>
+   <stop stop-color="#dbdb0c" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="-0.094848" y1="-0.094848" x2="1.000003" x1="0.000005" id="XMLID_3_">
+   <stop stop-color="#f3a122" offset="0"/>
+   <stop stop-color="#f3a82f" offset="0.0788"/>
+   <stop stop-color="#f7d17f" offset="0.5088"/>
+   <stop stop-color="#f3a122" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="-0.117959" y1="-0.117959" x2="0.999974" x1="-0.00001" id="XMLID_4_">
+   <stop stop-color="#147a33" offset="0"/>
+   <stop stop-color="#187f32" offset="0.0375"/>
+   <stop stop-color="#6cbb22" offset="0.5088"/>
+   <stop stop-color="#147a33" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="-0.117959" y1="-0.117959" x2="0.999988" x1="0.000005" id="XMLID_5_">
+   <stop stop-color="#1987a6" offset="0"/>
+   <stop stop-color="#29a7c3" offset="0.5088"/>
+   <stop stop-color="#1987a6" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="-0.117959" y1="-0.117959" x2="0.999974" x1="-0.000033" id="XMLID_6_">
+   <stop stop-color="#c71781" offset="0"/>
+   <stop stop-color="#cd2b8b" offset="0.1024"/>
+   <stop stop-color="#e87db6" offset="0.5088"/>
+   <stop stop-color="#c71781" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_15" fill-rule="evenodd" fill="#808080" d="m22.935997,101.828003l5.903999,0l0,115.595993l-5.903999,0l0,-115.595993z"/>
+  <path id="svg_16" fill-rule="evenodd" fill="#808080" d="m38.596001,101.468002l5.867996,0l0,149.904007l-5.867996,0l0,-149.904007z"/>
+  <path id="svg_17" fill-rule="evenodd" fill="#f7a122" d="m13.503998,87.211998l0,-62.423998l0,-0.252001c0,-12.419999 10.080002,-22.535999 22.5,-22.535999c12.384003,0 22.356003,9.9 22.536003,22.247999l-0.036003,62.963999l-45,0z"/>
+  <path id="svg_18" fill-rule="evenodd" fill="url(#XMLID_3_)" d="m16.239998,83.863998l0,-54.791998l0,-0.216c0,-10.908001 8.856003,-19.764001 19.764,-19.764001c10.872002,0 19.620003,8.676 19.764,19.547999l0,55.223999l-39.528,0z"/>
+  <path id="svg_19" fill-rule="evenodd" fill="#f7a122" d="m5.692001,86.671997l60.623993,0l0,15.624001l-60.623993,0l0,-15.624001z"/>
+  <path id="svg_20" fill-rule="evenodd" fill="#da8a1a" d="m47.776001,83.972l0,-30.599998l-24.804001,0l11.484001,14.975998l9.360001,0l0,15.624001l3.959999,0z"/>
+  <path id="svg_21" fill-rule="evenodd" fill="#da8a1a" d="m22.575996,83.972l0,-26.243999l9.360001,11.448002l0,14.795998l-9.360001,0z"/>
+ </g>
+</svg>

@@ -1,0 +1,197 @@
+html{
+	width: 100%;
+	height: 100%;
+}
+body {
+	font-family: Monospace;
+	background: url("../img/patterns/gridme.png");
+	margin: 0px;
+	width: inherit;
+	height: inherit;
+	/*overflow: hidden;*/
+}
+
+/*Canvas*/
+#canvas{
+	width: 100%;
+	height: 100%;
+}
+
+/*Controls*/
+#controls{
+	position: fixed;
+	/*left: calc(50% - 210px); /*Half width*/
+	left: calc(50% - 150px);
+	top: calc(100% - 100px);
+	background: #f0f0f0;
+	padding: 10px;
+	border-radius: 10px;
+	/*width: 420px;*/
+	width: auto;
+}
+	#controls .controls-inner{
+		/*width: 410px;*/
+		width: auto;
+	}
+	#controls .component{
+		height: 55px;
+		max-width: 50px;
+		padding: 5px;
+	}
+		#controls .component,
+		#controls .component-wrapper{
+			margin-right: 20px;
+		}
+			#controls .component:last-child,
+			#controls .component-wrapper:last-child,
+			#controls .component-wrapper .component{
+				margin-right: 0px;
+			}
+		#controls .component:hover,
+		#controls .component-wrapper:hover{
+			outline: 1px solid #000;
+		}
+
+		.component-wrapper{
+		    display: inline-block;
+		    overflow: hidden;
+		}
+			.component{
+				cursor: move;
+			}
+				.component:hover {
+				    
+				}
+#canvas .grid{
+	width: 100%;
+	height: 100%;
+}
+	#canvas .grid td{
+		/*position: absolute;*/
+	}
+		#canvas .grid td:hover{
+			outline: 2px solid #000;
+		}
+	#canvas .grid tr{
+		width: auto !important;
+	}
+
+.component.clone,
+.component-wrapper.clone,
+#canvas .grid tr,
+#canvas .grid td{
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+}
+
+.subcomponents{
+	width: 50px;
+	background-color: #cfcfcf;
+	position: absolute;
+	border-radius: 10px 10px 0px 0px;
+}
+	#subComponents1.subcomponents{
+		top: -190px;
+		left: -65px;
+		width: 200px !important;
+	}
+		#subComponents1.subcomponents .component{
+			padding: 0px !important;
+			margin: 5px !important;
+			display: inline-block;
+		}
+	#subComponents2.subcomponents{
+		top: -50px;
+		left: 89px;
+	}
+	#subComponents4.subcomponents{
+		top: -50px;
+		left: 220px;
+	}
+
+#properties{
+	position: fixed;
+	width: 235px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+	#properties .title{
+		text-align: center;
+		padding-top: 5px;
+		padding-bottom: 3px;
+		font-weight: bold;
+		text-transform: capitalize;
+		border-bottom: 1px solid #f0f0f0;
+	}
+	#properties .value{
+		text-transform: capitalize;
+	}
+	#properties .propertiesGeneral,
+	#properties .propertiesElement{
+		width: 100%;
+		height: auto;
+		background-color: #cfcfcf;
+		border-radius: 10px 10px 0px 0px;
+		padding: 5px 15px 15px 15px;
+	}
+	#properties .propertiesElement{
+		margin-top: 20px;
+	}
+		.propertiesElement input.value{
+			width: 55px;
+			text-align: center;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		.propertiesElement .properties{
+			padding-bottom: 15px;
+		}
+
+/*Helpers*/
+.helper{
+	float: right;
+	top: -48px;
+	left: 4px;
+	cursor: pointer;
+}
+.label{
+	font-size: 100% !important;
+	padding-left: 0px !important;
+}
+.notification{
+	font-size: 1.2em;
+	color: rgba(71, 163, 36, 0.99);
+	top: -25px;
+	left: -15px;
+	float: right;
+}
+.tooltip{
+	text-transform: capitalize;
+}
+.shadow{
+	-webkit-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.45);
+	-moz-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.45);
+	box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.45);
+}
+.strech-3-5{
+	transform: scale(3.5);
+	-ms-transform: scale(3.5); /* IE 9 */
+    -moz-transform: scale(3.5); /* Firefox */
+    -webkit-transform: scale(3.5); /* Safari and Chrome */
+    -o-transform: scale(3.5); /* Opera */
+}
+.rotate-90{
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+}
+	.strech-3-5.rotate-90{
+		transform: scale(3.5) rotate(90deg);
+		-webkit-transform: scale(3.5) rotate(90deg);
+		-moz-transform: scale(3.5) rotate(90deg);
+		-o-transform: scale(3.5) rotate(90deg);
+		-ms-transform: scale(3.5) rotate(90deg);
+	}
