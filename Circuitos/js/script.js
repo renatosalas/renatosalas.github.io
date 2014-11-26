@@ -277,20 +277,12 @@ $(document).ready(function(){
 	/*Check connectivity*/
 	var verifyConnectivity = function(side){
 		//Update General Values
-		var volT,
-			corrT,
-			capEq,
-			resEq,
-			cargaT,
-			energiaAl;
-		volT = calcularVoltaje();
-		corrT = calcularCorriente(1, 1);
-		capEq = calcularCapacitanciaParalelo(1, 1);
-		resEq = calcularResistenciaParalelo(1, 1);
-		cargaT = calcularCargaTotal(1, 1);
-		energiaAl = calcularEnergiaAlmacenadaTotal(1,1 );
-
-		updateGeneralValues(volT, corrT, capEq, resEq, cargaT, energiaAl);
+		var volT = 0,
+			corrT = 0,
+			capEq = 0,
+			resEq = 0,
+			cargaT = 0,
+			energiaAl = 0;
 
 		var elements = {
 			array: obtenerElementos(),
@@ -315,12 +307,23 @@ $(document).ready(function(){
 
 		var circuito = new CircuitoCorrecto(elements);
 		var conectado = circuito.circuitoConectado(circuito.posBateria.y, circuito.posBateria.x);
-		
-		if(conectado){
-			alert("Conectado!");
-		}
+		//console.log(circuito.resistenciasS);
+		//console.log(circuito.resistenciasP);
+		//console.log(circuito.capacitanciasS);
+		//console.log(circuito.capacitanciasP);
 
-		//console.log(elements.array);
+		if(conectado){
+			capEq = calcularCapacitanciaEquivalente(circuito.capacitanciasS, "serie");
+			resEq = calcularResistenciaEquivalente(circuito.resistenciasS, "serie");
+			volT = calcularVoltaje();
+			corrT = calcularCorriente(volT, resEq);
+			cargaT = calcularCargaTotal(volT, capEq);
+			energiaAl = calcularEnergiaAlmacenadaTotal(volT, capEq);
+
+			updateGeneralValues(volT, corrT, capEq, resEq, cargaT, energiaAl);
+		}else{
+			updateGeneralValues(0, 0, 0, 0, 0, 0);
+		}
 	};
 
 	/*Hide Properties via Helper Button*/
@@ -363,7 +366,7 @@ $(document).ready(function(){
 	}
 	function setValue(toElement, value){
 		if(toElement.attr("value")){
-			toElement.attr("value", value);
+			$(toElement).val(value);
 		}else{
 			toElement.html(value);
 		}
@@ -389,7 +392,6 @@ $(document).ready(function(){
 	}
 	function updateValue(toElement, attr, value, notificationElement, mainValue){
 		toElement.attr(attr, value);
-		console.log(mainValue);
 		if(mainValue) updateTooltip(toElement, value);
 
 		if(toElement.attr(attr) == value){
@@ -398,6 +400,54 @@ $(document).ready(function(){
 			    notificationElement.fadeOut('slow');
 			}, 1500);
 		}
+		var val = value.split(" ");
+		val = val[0];
+		toElement.attr(attr, val); //Asignar valor numerico en attr
+
+		//UpdateGeneralValues
+		var type = $(toElement).attr("type");
+		//Apply Properties
+		if(type == "bateria" && attr == "voltaje"){
+			verifyConnectivity("left");
+		}else if(type == "resistor" && attr == "resistencia"){
+			verifyConnectivity("left");
+		}else if(type == "capacitor" && attr == "capacitancia"){
+			verifyConnectivity("left");
+		}
+	}
+
+	function calcularResistenciaEquivalente(arrayResistencias, type){
+		var result = 0;
+		if(type == "paralelo"){
+			//Not implemented
+		}else if(type == "serie"){
+			arrayResistencias.forEach(function(e){
+				var element = getElementsAt(e.y, e.x)[0];
+				var value = parseInt(getValueOf(element));
+				result += value;
+			});
+		}
+
+		return result;
+	}
+
+	function calcularCapacitanciaEquivalente(arrayCapacitadores, type){
+		var result = 0;
+		if(type == "paralelo"){
+			//Not implemented
+		}else if(type == "serie"){
+			arrayCapacitadores.forEach(function(e){
+				var element = getElementsAt(e.y, e.x)[0];
+				var value = parseFloat(getValueOf(element));
+				result += 1/value;
+			});
+		}
+
+		result = 1/result;
+
+		result = parseFloat(result).toFixed(4);
+
+		return result;
 	}
 
 	function calcularResistenciaParalelo(res1, res2){ //Ohms
@@ -421,17 +471,22 @@ $(document).ready(function(){
 	}
 
 	function calcularCorriente(voltaje, resEq){ //Amperes
-		var i = voltaje / resEq;
+		if(resEq != 0){
+			var i = voltaje / resEq;
+			i = parseFloat(i).toFixed(4);
+		}else i = 0;
 		return i;
 	}
 
 	function calcularCargaTotal(voltaje, capEq){ //Coulombs
 		var q = voltaje * capEq;
+		q = parseFloat(q).toFixed(4);
 		return q;
 	}
 
 	function calcularEnergiaAlmacenadaTotal(voltaje, capEq){ //Joules
-		var e = (capEq * (voltaje*voltaje)) / 2
+		var e = (capEq * (voltaje*voltaje)) / 2;
+		e = parseFloat(e).toFixed(4);
 		return e;
 	}
 
@@ -486,8 +541,6 @@ $(document).ready(function(){
 			}
 		}
 
-		console.log(result);
-
 		return result;
 	}
 
@@ -498,6 +551,26 @@ $(document).ready(function(){
 	                           return $(this).position().top == top 
 	                                    && $(this).position().left == left;
 	               });
+	}
+
+	function getValueOf(element){
+		var result = 0;
+		var type = $(element).attr("type");
+
+		//Detect Propertie of value
+		if(type == "bateria"){
+			result = $(element).attr("voltaje");
+		}else if(type == "capacitor"){
+			result = $(element).attr("capacitancia");
+		}else if(type == "resistor"){
+			result = $(element).attr("resistencia");
+		}else if(type == "bombilla"){
+			result = $(element).attr("potencia");
+		}else if(type == "led"){
+			result = $(element).attr("potencia");
+		}
+
+		return result;
 	}
 
 	function detectSubType(element){

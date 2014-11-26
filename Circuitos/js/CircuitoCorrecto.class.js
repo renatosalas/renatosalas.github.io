@@ -6,9 +6,14 @@ function CircuitoCorrecto(circuitoPackage){
 	this.filas = 0;
 	this.columnas = 0;
 	this.circuitoN = []; //char[][]
-	this.resistencias = []; //objects {x: x, y: y}[]
-	this.capacitancias = []; //objects {x: x, y:y}[]
+
+	this.resistenciasS = []; //objects {x: x, y: y}[]
+	this.resistenciasP = []; //objects {x: x, y: y}[]
+	this.capacitanciasS = []; //objects {x: x, y: y}[]
+	this.capacitanciasP = []; //objects {x: x, y: y}[]
+	
 	this.flag = 0;
+	this.widthCell = 50;
 
 	this.filas = circuitoPackage.array.length;
 	this.columnas = circuitoPackage.array[0].length;
@@ -97,6 +102,7 @@ function CircuitoCorrecto(circuitoPackage){
 		var figuraAct = this.circuitoN[fila][columna];
 		var figuraSig = this.circuitoN[fila2][columna2];
 
+		//Detect Compability
 		if(figuraAct=="7" && mov=="arriba" && (figuraSig=="2" || figuraSig=="5" || figuraSig=="6" || figuraSig=="C" || figuraSig=="B" || figuraSig=="A")){
 			return true;
 		}
@@ -182,22 +188,18 @@ function CircuitoCorrecto(circuitoPackage){
 	this.circuitoConectado = function(fila, columna){ //Cambie orden parametros
 		var completo = false;
 
-		console.log("Columna: " + columna + "    Fila: " + fila);
-		console.log("Fig: " + this.circuitoN[fila][columna]);
-
 		this.pasado[fila][columna] = true;
 
 		if( (fila==this.posBateria.y && columna==this.posBateria.x)){ 
 			this.flag++;
 
-			console.log("1RA BATERIA");
-			console.log("Flag: " + this.flag);
-
 			if(this.flag>1 && this.pasado[fila][columna]){
-				console.log("REGRESAMOS A BATERIA");
 				return true;
 			}
 		}
+
+		//Detect posible critic components of Serie || Parallel
+		var isSerie = this.detectSerie(this.circuitoN[fila][columna], fila, columna);
 
 		var comparar = this.compararFig(fila, columna, fila-1, columna);
 
@@ -221,6 +223,52 @@ function CircuitoCorrecto(circuitoPackage){
 		}
 
 		return completo;
+	}
+
+	this.detectSerie = function(figuraAct, fila, columna){
+		var criticComponents = {
+			divided: ["9", "A", "B", "C"],
+			continuos: ["3", "4", "5", "6"]
+		};
+
+		var componentsInSerie = true;
+		for(var key in criticComponents){
+			if(key == "divided"){
+				criticComponents[key].forEach(function(e){
+					if(figuraAct == e){ //cableT found
+						componentsInSerie = false;
+						return false;
+					}
+				});
+			}
+
+			if(!componentsInSerie){ //Not in Serie
+				this.insertComponenteParalelo(figuraAct, fila, columna);
+			}
+			else{
+				this.insertComponenteSerie(figuraAct, fila, columna);
+			}
+
+			break; //Dont consider "continuos" elements
+		}
+
+		return componentsInSerie;
+	}
+
+	this.insertComponenteParalelo = function(figuraAct, fila, columna){
+		if(figuraAct=="R" || figuraAct=="M"){ //resistencias
+			this.resistenciasP.push({ code: figuraAct, x: columna*this.widthCell, y: fila*this.widthCell });
+		}else if(figuraAct=="K"){ //capacitor
+			this.capacitanciasP.push({ code: figuraAct, x: columna*this.widthCell, y: fila*this.widthCell });
+		}
+	}
+
+	this.insertComponenteSerie = function(figuraAct, fila, columna){
+		if(figuraAct=="R" || figuraAct=="M"){ //resistencias
+			this.resistenciasS.push({ code: figuraAct, x: columna*this.widthCell, y: fila*this.widthCell });
+		}else if(figuraAct=="K"){ //capacitor
+			this.capacitanciasS.push({ code: figuraAct, x: columna*this.widthCell, y: fila*this.widthCell });
+		}
 	}
 
 	this.inicializarPasado(this.filas, this.columnas);
